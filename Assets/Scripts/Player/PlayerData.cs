@@ -4,18 +4,10 @@ using UnityEngine;
 
 namespace FirstOfUs.Player
 {
-    public class PlayerData : MonoBehaviour
+    [CreateAssetMenu(menuName = "Scriptable Objects/Player/PlayerData")]
+    public class PlayerData : ScriptableObject
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        [SerializeField] private readonly float movementSpeed;
+        public float MovementSpeed => movementSpeed;
     } 
 }

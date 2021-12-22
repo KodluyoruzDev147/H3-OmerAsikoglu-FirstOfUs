@@ -6,9 +6,11 @@ namespace FirstOfUs.NPC
 {
     public class MateController : NPC
     {
+        [SerializeField] private MateData mateData;
         protected override void Awake()
         {
             base.Awake();
+            SetNPCPoint(mateData.MatePoint);
         }
 
         protected override void Start()

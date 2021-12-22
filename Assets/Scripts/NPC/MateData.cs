@@ -8,8 +8,12 @@ namespace FirstOfUs.NPC
     public class MateData : ScriptableObject
     {
         [SerializeField] private readonly float movementSpeed;
+        [SerializeField] private readonly float targetDetectDistance;
+        [SerializeField] private readonly int matePoint;
 
         public float MovementSpeed => movementSpeed;  // get { return movementSpeed;}
+        public float TargetDetectDistance => targetDetectDistance;
+        public int MatePoint => matePoint;
 
     }
 
