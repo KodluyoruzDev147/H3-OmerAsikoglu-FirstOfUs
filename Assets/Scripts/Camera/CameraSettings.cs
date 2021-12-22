@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraSettings : MonoBehaviour
+namespace FirstOfUs.Camera
 {
-    // Start is called before the first frame update
-    void Start()
+    [CreateAssetMenu(menuName = "Scriptable Objects/Camera/Settings")]
+    public class CameraSettings : ScriptableObject
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    } 
 }

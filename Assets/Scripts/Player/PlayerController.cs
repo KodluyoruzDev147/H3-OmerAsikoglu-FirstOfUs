@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+namespace FirstOfUs.Player
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerController : Model
     {
-        
+        protected override void Awake()
+        {
+            base.Awake();
+        }
+
+        protected override void Start()
+        {
+            base.Start();
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

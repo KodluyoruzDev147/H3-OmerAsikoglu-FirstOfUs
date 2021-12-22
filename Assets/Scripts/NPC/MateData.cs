@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MateData : MonoBehaviour
+namespace FirstOfUs.NPC
 {
-    // Start is called before the first frame update
-    void Start()
+    [CreateAssetMenu(menuName = "Scriptable Objects/NPC/MateData")]
+    public class MateData : ScriptableObject
     {
-        
+        [SerializeField] private readonly float movementSpeed;
+
+        public float MovementSpeed => movementSpeed;  // get { return movementSpeed;}
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

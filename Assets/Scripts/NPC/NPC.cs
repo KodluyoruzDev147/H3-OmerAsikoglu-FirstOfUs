@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC : MonoBehaviour
+namespace FirstOfUs.NPC
 {
-    // Start is called before the first frame update
-    void Start()
+    public class NPC : Model
     {
-        
-    }
+        protected override void Awake()
+        {
+            base.Awake();
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        protected override void Start()
+        {
+            base.Start();
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+        }
     }
 }

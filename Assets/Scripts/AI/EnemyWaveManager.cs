@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyWaveManager : MonoBehaviour
+namespace FirstOfUs.AI
 {
-    // Start is called before the first frame update
-    void Start()
+    public class EnemyWaveManager : MonoBehaviour
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [SerializeField] private EnemyWaveData waveData;
+        [SerializeField] private Transform pfEnemy;
     }
 }

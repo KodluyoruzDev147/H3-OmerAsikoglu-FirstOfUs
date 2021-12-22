@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+namespace FirstOfUs.NPC
 {
-    // Start is called before the first frame update
-    void Start()
+    public class EnemyController : NPC
     {
-        
+        protected override void Awake()
+        {
+            base.Awake();
+        }
+
+        protected override void Start()
+        {
+            base.Start();
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

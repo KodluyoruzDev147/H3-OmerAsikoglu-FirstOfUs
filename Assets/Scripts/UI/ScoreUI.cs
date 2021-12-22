@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreUI : MonoBehaviour
+namespace FirstOfUs.UI
 {
-    // Start is called before the first frame update
-    void Start()
+    public class ScoreUI : MonoBehaviour
     {
-        
-    }
+        public static ScoreUI Instance { get; private set; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //private static ScoreUI instance;
+        //public static ScoreUI Instance => instance ?? (instance = new MySingleton());
+
+        private void Awake()
+        {
+            Instance = this;
+        }
     }
 }

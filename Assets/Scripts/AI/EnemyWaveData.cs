@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyWaveData : MonoBehaviour
+namespace FirstOfUs.AI
 {
-    // Start is called before the first frame update
-    void Start()
+    [CreateAssetMenu(menuName = "Scriptable Objects/AI/EnemyWaveData")]
+    public class EnemyWaveData : ScriptableObject
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
