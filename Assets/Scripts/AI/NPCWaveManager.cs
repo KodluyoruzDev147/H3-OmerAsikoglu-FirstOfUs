@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace FirstOfUs.AI
 {
-    public class EnemyWaveManager : MonoBehaviour
+    public class NPCWaveManager : MonoBehaviour
     {
-        [SerializeField] private EnemyWaveData waveData;
+        [SerializeField] private NPCWaveData waveData;
         [SerializeField] private Transform pfEnemy;
     }
 }

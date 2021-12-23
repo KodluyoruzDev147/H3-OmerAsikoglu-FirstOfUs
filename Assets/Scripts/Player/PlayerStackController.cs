@@ -3,61 +3,65 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStackController : MonoBehaviour
+namespace FirstOfUs.Player
 {
-    private Dictionary<int, Transform> mateStackDic;
-    
-    private const int maxMateCount = 6;
-    private int activeMateCount = 0;
-    
-    private void Awake()
+    public class PlayerStackController : MonoBehaviour
     {
-        mateStackDic = new Dictionary<int, Transform>(); // 1-2...-6 
+        [SerializeField] private PlayerData playerData;
 
-        InitMateStack();
-    }
+        private Dictionary<int, Transform> mateStackDic; // [index, childTransform] => index starting from 1 bcs equal to activeMateCount
 
-    private void InitMateStack()
-    {
-        Transform mateTransform = transform.Find(StringData.STACK);
+        private int activeMateCount = 0;
 
-        int i = 1;
-        foreach (Transform mate in mateTransform)
+        private void Awake()
         {
-            mateStackDic[i] = mate;
-            i++;
-            mate.gameObject.SetActive(false);
-        }
-    }
+            mateStackDic = new Dictionary<int, Transform>();
 
-    public void AddMate()
-    {
-        activeMateCount++;
-        if (activeMateCount <= maxMateCount)
-        {
-            AddMateToStack();
+            InitMateStack();
         }
-    }
-    private void AddMateToStack()
-    {
-        if (mateStackDic.ContainsKey(activeMateCount))
+
+        private void InitMateStack()
         {
-            mateStackDic[activeMateCount].gameObject.SetActive(true);
+            Transform mateTransform = transform.Find(StringData.STACK);
+
+            int index = 1;
+            foreach (Transform mate in mateTransform)
+            {
+                mateStackDic[index] = mate;
+                index++;
+                mate.gameObject.SetActive(false);
+            }
         }
-    }
-    public void RemoveMate()
-    {
-        if (activeMateCount > 0)
+
+        public void AddMate()
         {
-            activeMateCount--;
-            RemoveMateFromStack();
+            if (activeMateCount <= playerData.MaxMateCount)
+            {
+                activeMateCount++;
+                AddMateToStack();
+            }
         }
-    }
-    private void RemoveMateFromStack()
-    {
-        if (mateStackDic.ContainsKey(activeMateCount + 1))
+        private void AddMateToStack()
         {
-            mateStackDic[activeMateCount + 1].gameObject.SetActive(false);
+            if (mateStackDic.ContainsKey(activeMateCount))
+            {
+                mateStackDic[activeMateCount].gameObject.SetActive(true);
+            }
+        }
+        public void RemoveMate()
+        {
+            if (activeMateCount > 0)
+            {
+                activeMateCount--;
+                RemoveMateFromStack();
+            }
+        }
+        private void RemoveMateFromStack()
+        {
+            if (mateStackDic.ContainsKey(activeMateCount + 1))
+            {
+                mateStackDic[activeMateCount + 1].gameObject.SetActive(false);
+            }
         }
     }
 }
