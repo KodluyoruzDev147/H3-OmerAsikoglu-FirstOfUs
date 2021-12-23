@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FirstOfUs.Player;
+using FirstOfUs.UI;
 
 namespace FirstOfUs.NPC
 {
@@ -11,7 +12,7 @@ namespace FirstOfUs.NPC
         protected override void Awake()
         {
             base.Awake();
-            SetNPCPoint(enemyData.EnemyPoint);
+             npcPoint = enemyData.EnemyPoint;
         }
 
         protected override void Start()
@@ -36,7 +37,7 @@ namespace FirstOfUs.NPC
             if (player != null)
             {
 
-                UI.ScoreUI.Instance.ChangeScore(npcPoint);
+                ScoreUI.Instance.UpdateScore(npcPoint);
 
                 player.RemoveMate();
 

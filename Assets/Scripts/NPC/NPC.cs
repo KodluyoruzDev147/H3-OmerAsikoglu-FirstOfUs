@@ -43,10 +43,6 @@ namespace FirstOfUs.NPC
 
 
         }
-        protected void SetNPCPoint(int amount = 0)
-        {
-            npcPoint = amount;
-        }
         protected void SetMoveSpeed(float amount)
         {
             moveSpeed = amount;

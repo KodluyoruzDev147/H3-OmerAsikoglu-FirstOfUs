@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 namespace FirstOfUs.UI
@@ -10,20 +9,32 @@ namespace FirstOfUs.UI
     {
         public static ScoreUI Instance { get; private set; }
 
-        private int totalScore = 0;
+        [SerializeField] private Transform youWinUI;
+        
+        private TextMeshProUGUI textMesh;
 
-
-        //private static ScoreUI instance;
-        //public static ScoreUI Instance => instance ?? (instance = new MySingleton());
+        private int currentScore = 0;
+        private const int maxScore = 6;
 
         private void Awake()
         {
             Instance = this;
+
+            textMesh = transform.Find(StringData.BACKGROUND).Find(StringData.TEXT).GetComponent<TextMeshProUGUI>();
+            youWinUI.gameObject.SetActive(false);
+
+            UpdateScore();
         }
 
-        public void ChangeScore(int amount)
+        public void UpdateScore(int amount = 0)
         {
-            totalScore += amount;
+            currentScore += amount;
+            currentScore = Mathf.Clamp(currentScore, 0, maxScore);
+            textMesh.SetText(currentScore.ToString() + " / " + maxScore.ToString());
+            if (currentScore == maxScore)
+            {
+                youWinUI.gameObject.SetActive(true);
+            }
         }
 
     }

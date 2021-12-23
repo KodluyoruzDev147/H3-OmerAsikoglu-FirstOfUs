@@ -8,5 +8,9 @@ public struct StringData
     //mate count
     public const string STACK = "Stack";
 
-
+    //UI
+    public const string SCORE_UI = "ScoreUI"; 
+    public const string BACKGROUND = "background"; 
+    public const string TEXT = "text"; 
+    
 }
