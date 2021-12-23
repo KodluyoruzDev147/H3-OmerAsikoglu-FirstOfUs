@@ -16,17 +16,31 @@ namespace FirstOfUs.NPC
         protected override void Start()
         {
             base.Start();
+
+            if (enemyData.MovementSpeed != 0)
+            {
+                SetMoveSpeed(enemyData.MovementSpeed);
+            }
         }
 
         protected override void Update()
         {
             base.Update();
-            transform.Translate(moveDirection * Time.deltaTime);
         }
 
         protected override void OnCollisionEnter(Collision collision)
         {
             base.OnCollisionEnter(collision);
+            PlayerStackController player = collision.gameObject.GetComponent<PlayerStackController>();
+            if (player != null)
+            {
+
+                UI.ScoreUI.Instance.ChangeScore(npcPoint);
+
+                player.RemoveMate();
+
+                Destroy(gameObject);
+            }
         }
     }
 

@@ -22,6 +22,21 @@ namespace FirstOfUs.NPC
         {
             base.Update();
         }
+
+        protected override void OnCollisionEnter(Collision collision)
+        {
+            base.OnCollisionEnter(collision);
+            PlayerStackController player = collision.gameObject.GetComponent<PlayerStackController>();
+            if (player != null)
+            {
+
+                UI.ScoreUI.Instance.ChangeScore(npcPoint);
+
+                player.AddMate();
+
+                Destroy(gameObject);
+            }
+        }
     }
 
 }

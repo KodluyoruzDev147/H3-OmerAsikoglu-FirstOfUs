@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a148afca9f39195408b39f4af85c5bba, type: 3}
   m_Name: EnemyData_Default
   m_EditorClassIdentifier: 
+  movementSpeed: 0
+  targetDetectDistance: 0
+  enemyPoint: -1

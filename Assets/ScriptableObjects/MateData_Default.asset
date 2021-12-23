@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679d4f6b7ecb8cc4786708bd0e732bd3, type: 3}
   m_Name: MateData_Default
   m_EditorClassIdentifier: 
+  movementSpeed: 0
+  targetDetectDistance: 0
+  matePoint: 1

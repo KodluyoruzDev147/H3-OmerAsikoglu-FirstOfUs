@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FirstOfUs.Player;
+using System;
 
 namespace FirstOfUs.NPC
 {
     public class NPC : Model
     {
         [SerializeField] protected Transform targetTransform;
+        private float moveSpeed;
 
         protected Vector3 moveDirection;
 
@@ -22,11 +24,18 @@ namespace FirstOfUs.NPC
         {
             base.Start();
             SetDirection();
+            GetRandomMoveSpeed();
+        }
+
+        private void GetRandomMoveSpeed()
+        {
+            moveSpeed = UnityEngine.Random.Range(0, 2) < 1 ? 2f : 4f;
         }
 
         protected override void Update()
         {
             base.Update();
+            transform.Translate(moveSpeed * moveDirection * Time.deltaTime);
         }
 
         private void SetDirection()
@@ -39,18 +48,13 @@ namespace FirstOfUs.NPC
         {
             npcPoint = amount;
         }
+        protected void SetMoveSpeed(float amount)
+        {
+            moveSpeed = amount;
+        }
         protected virtual void OnCollisionEnter(Collision collision)
         {
-            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-            if (player != null)
-            {
-
-                UI.ScoreUI.Instance.ChangeScore(npcPoint);
-
-                //TODO: Add mate to your back
-
-                Destroy(gameObject);
-            }
+            
 
         }
 
