@@ -9,10 +9,13 @@ namespace FirstOfUs.NPC
     public class MateController : NPC
     {
         [SerializeField] private MateData mateData;
+
+        private float currentDirectionCheckTime;
         protected override void Awake()
         {
             base.Awake();
             npcPoint = mateData.MatePoint;
+            currentDirectionCheckTime = mateData.DirectionCheckTimeMax;
         }
 
         protected override void Start()
@@ -23,6 +26,13 @@ namespace FirstOfUs.NPC
         protected override void Update()
         {
             base.Update();
+            currentDirectionCheckTime -= Time.deltaTime;
+            if (currentDirectionCheckTime <= 0f)
+            {
+                SetDirection();
+                currentDirectionCheckTime = mateData.DirectionCheckTimeMax;
+            }
+
         }
 
         protected override void OnCollisionEnter(Collision collision)

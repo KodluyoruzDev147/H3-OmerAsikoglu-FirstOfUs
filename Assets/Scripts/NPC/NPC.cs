@@ -22,8 +22,14 @@ namespace FirstOfUs.NPC
         protected override void Start()
         {
             base.Start();
+
+            if (targetTransform == null)
+            {
+                targetTransform = GameObject.Find(StringData.PLAYER).transform;
+            }
             SetDirection();
             GetRandomMoveSpeed();
+
         }
 
         private void GetRandomMoveSpeed()
@@ -37,7 +43,7 @@ namespace FirstOfUs.NPC
             transform.Translate(moveSpeed * moveDirection * Time.deltaTime);
         }
 
-        private void SetDirection()
+        protected void SetDirection()
         {
             moveDirection = (targetTransform.position - transform.position).normalized;
 

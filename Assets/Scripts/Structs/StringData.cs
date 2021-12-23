@@ -11,6 +11,10 @@ public struct StringData
     //UI
     public const string SCORE_UI = "ScoreUI"; 
     public const string BACKGROUND = "background"; 
-    public const string TEXT = "text"; 
+    public const string TEXT = "text";
+
+    //Player
+    public const string PLAYER = "Player";
     
+
 }

@@ -9,11 +9,11 @@ namespace FirstOfUs.AI
     {
         [SerializeField] private int totalWaveNumber = 5;
         [SerializeField] private int amountOfEnemyPerSpawn;
-        [SerializeField] private float enemySpawnTimerMax;
+        [SerializeField] private const float npcSpawnTimerMax = 2f;
 
         public int TotalWaveNumber => totalWaveNumber;
         public int AmountOfEnemyPerSpawn => amountOfEnemyPerSpawn;
-        public float EnemySpawnTimerMax => enemySpawnTimerMax;
+        public float NPCSpawnTimerMax => npcSpawnTimerMax;
         private void OnEnable()
         {
             amountOfEnemyPerSpawn = UnityEngine.Random.Range(1, 3);

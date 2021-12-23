@@ -9,6 +9,8 @@ namespace FirstOfUs.NPC
     public class EnemyController : NPC
     {
         [SerializeField] private EnemyData enemyData;
+
+        private float currentDirectionCheckTime;
         protected override void Awake()
         {
             base.Awake();
@@ -28,6 +30,12 @@ namespace FirstOfUs.NPC
         protected override void Update()
         {
             base.Update();
+            currentDirectionCheckTime -= Time.deltaTime;
+            if (currentDirectionCheckTime <= 0f)
+            {
+                SetDirection();
+                currentDirectionCheckTime = enemyData.DirectionCheckTimeMax;
+            }
         }
 
         protected override void OnCollisionEnter(Collision collision)
