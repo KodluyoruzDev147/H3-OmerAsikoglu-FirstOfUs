@@ -14,7 +14,7 @@ namespace FirstOfUs.NPC
         protected override void Awake()
         {
             base.Awake();
-             npcPoint = enemyData.EnemyPoint;
+            npcPoint = enemyData.EnemyPoint;
         }
 
         protected override void Start()
@@ -42,14 +42,17 @@ namespace FirstOfUs.NPC
         {
             base.OnCollisionEnter(collision);
             PlayerStackController player = collision.gameObject.GetComponent<PlayerStackController>();
-            if (player != null)
+
+            if (collision.collider.GetType() == typeof(BoxCollider) && player != null)
             {
-
+                SetDirectionReverse();
+                Destroy(gameObject, 5f);
+            }
+            if (collision.collider.GetType() == typeof(CapsuleCollider) && player != null)
+            {
                 ScoreUI.Instance.UpdateScore(npcPoint);
-
-                player.RemoveMate();
-
-                Destroy(gameObject);
+                collision.gameObject.GetComponent<PlayerStackController>().RemoveMate();
+                Destroy(gameObject);    
             }
         }
     }

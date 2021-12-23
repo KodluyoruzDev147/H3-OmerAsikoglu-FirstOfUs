@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 namespace FirstOfUs.UI
 {
@@ -10,7 +11,7 @@ namespace FirstOfUs.UI
         public static ScoreUI Instance { get; private set; }
 
         [SerializeField] private Transform youWinUI;
-        
+
         private TextMeshProUGUI textMesh;
 
         private int currentScore = 0;
@@ -34,8 +35,12 @@ namespace FirstOfUs.UI
             if (currentScore == maxScore)
             {
                 youWinUI.gameObject.SetActive(true);
+                Invoke("LoadCurrentScene", 2f);
             }
         }
-
+        private void LoadCurrentScene()
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }

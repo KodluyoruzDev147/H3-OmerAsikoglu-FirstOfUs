@@ -46,8 +46,11 @@ namespace FirstOfUs.NPC
         protected void SetDirection()
         {
             moveDirection = (targetTransform.position - transform.position).normalized;
-
-
+        }
+        protected void SetDirectionReverse()
+        {
+            moveDirection = (transform.position - targetTransform.position).normalized;
+            SetMoveSpeed(moveSpeed * 3);
         }
         protected void SetMoveSpeed(float amount)
         {

@@ -11,8 +11,8 @@ namespace FirstOfUs.PlayerInput
         public float horizontalInput;
         public float verticalInput;
 
-        public float mouseInputX;
-        public float mouseInputY;
+        public bool isClickingRight;
+        public bool isClickingLeft;
 
     } 
 }

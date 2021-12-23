@@ -39,14 +39,17 @@ namespace FirstOfUs.NPC
         {
             base.OnCollisionEnter(collision);
             PlayerStackController player = collision.gameObject.GetComponent<PlayerStackController>();
-            if (player != null)
+
+            if (collision.collider.GetType() == typeof(BoxCollider) && player != null)
             {
-
                 ScoreUI.Instance.UpdateScore(npcPoint);
-
-                player.AddMate();
-
+                collision.gameObject.GetComponent<PlayerStackController>().AddMate();
                 Destroy(gameObject);
+            }
+            if (collision.collider.GetType() == typeof(CapsuleCollider) && player != null)
+            {
+                SetDirectionReverse();
+                Destroy(gameObject, 5f);
             }
         }
     }

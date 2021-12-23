@@ -9,9 +9,17 @@ namespace FirstOfUs.Player
     {
         [SerializeField] private PlayerControllerData playerData;
         [SerializeField] private InputData inputData;
+
+        //private Vector3 screenPoint;
+        public float rotatePosY;
+        public float rotateSpeed;
+
         protected override void Awake()
         {
             base.Awake();
+
+            //screenPoint = UnityEngine.Camera.main.WorldToScreenPoint(transform.localPosition);
+            rotateSpeed = playerData.RotateSpeed;
         }
 
         protected override void Start()
@@ -22,10 +30,22 @@ namespace FirstOfUs.Player
         protected override void Update()
         {
             base.Update();
-        }
-        public PlayerControllerData GetPlayerData()
-        {
-            return playerData;
+            if (inputData.isClickingRight || inputData.horizontalInput < 0f)
+            {
+                //sola dön
+                rotatePosY += rotateSpeed * Time.deltaTime;
+                transform.Rotate(0, rotatePosY, 0);
+            }
+            else if (inputData.isClickingLeft || inputData.horizontalInput > 0f)
+            {
+                //saða dön
+                rotatePosY += rotateSpeed * Time.deltaTime;
+                transform.Rotate(0, -rotatePosY, 0);
+            }
+            else
+            {
+                rotatePosY = 0f;
+            }
         }
     }
 
