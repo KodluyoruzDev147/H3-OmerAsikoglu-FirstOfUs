@@ -8,13 +8,16 @@ namespace FirstOfUs.AI
     public class NPCWaveData : ScriptableObject
     {
         [SerializeField] private int totalWaveNumber = 5;
-        [SerializeField] private int amountOfEnemyPerSpawn = UnityEngine.Random.Range(1, 3);
+        [SerializeField] private int amountOfEnemyPerSpawn;
         [SerializeField] private float enemySpawnTimerMax;
 
         public int TotalWaveNumber => totalWaveNumber;
         public int AmountOfEnemyPerSpawn => amountOfEnemyPerSpawn;
         public float EnemySpawnTimerMax => enemySpawnTimerMax;
-
+        private void OnEnable()
+        {
+            amountOfEnemyPerSpawn = UnityEngine.Random.Range(1, 3);
+        }
     }
 
 }

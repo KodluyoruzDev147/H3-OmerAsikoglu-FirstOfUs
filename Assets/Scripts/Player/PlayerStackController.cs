@@ -7,7 +7,7 @@ namespace FirstOfUs.Player
 {
     public class PlayerStackController : MonoBehaviour
     {
-        [SerializeField] private PlayerData playerData;
+        [SerializeField] private PlayerStackData playerStackData;
 
         private Dictionary<int, Transform> mateStackDic; // [index, childTransform] => index starting from 1 bcs equal to activeMateCount
 
@@ -35,7 +35,7 @@ namespace FirstOfUs.Player
 
         public void AddMate()
         {
-            if (activeMateCount <= playerData.MaxMateCount)
+            if (activeMateCount <= playerStackData.MaxMateCount)
             {
                 activeMateCount++;
                 AddMateToStack();
