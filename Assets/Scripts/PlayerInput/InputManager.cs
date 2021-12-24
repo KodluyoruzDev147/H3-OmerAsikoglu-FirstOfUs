@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace FirstOfUs.PlayerInput
 {
-    //TODO: Add Mobile Input System
     public class InputManager : MonoBehaviour
     {
         [SerializeField] private InputData inputData;
